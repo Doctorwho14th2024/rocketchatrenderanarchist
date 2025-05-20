@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: rocketchat
+    env: node
+    plan: free
+    buildCommand: |
+      cd .deploy && npm install
+    startCommand: |
+      cd .deploy && node main.js
+    envVars:
+      - key: MONGO_URL
+        sync: false
+      - key: ROOT_URL
+        value: https://rocketchat.onrender.com
+      - key: PORT
+        value: 3000
